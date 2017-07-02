@@ -34,14 +34,14 @@ function startBot(){
 				availableTransaction = getAvailableTransaction(getAccountHistoryResult[i]);
 				if(availableTransaction){
 					logger.info('보팅 후보: '+availableTransaction.memo);
-//					config.lastVotingTimestamp = availableTransaction.postCreatedAt;
-//					var str = JSON.stringify(config, null, 4);
-//					
-//					fs.writeFile(CONFIG_FILEPATH, str, "utf8", function (err) {
-//						
-//						
-//			        });
-//					vote(availableTransaction);
+					config.lastVotingTimestamp = availableTransaction.postCreatedAt;
+					var str = JSON.stringify(config, null, 4);
+					
+					fs.writeFile(CONFIG_FILEPATH, str, "utf8", function (err) {
+						
+						
+			        });
+					vote(availableTransaction);
 				}
 			}
 		}

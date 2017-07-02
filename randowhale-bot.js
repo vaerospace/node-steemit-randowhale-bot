@@ -75,7 +75,7 @@ function createComment(postInfo){
 	
 	var commentPermlink = steem.formatter.commentPermlink(postInfo.author, postInfo.permlink);
 	postInfo.votingPower /= 100;
-	body = 'This post received a '+postInfo.votingPower+'% upvote from @'+user.name+' thanks to @'+postInfo.author+'! For more information, [click here]('+config.introductionLink+')!';
+	body = 'This post received a '+postInfo.votingPower+'% upvote from @'+user.name+' thanks to @'+postInfo.to+'! For more information, [click here]('+config.introductionLink+')!';
 	console.log(body);
 	steem.broadcast.comment(wif,  postInfo.author, postInfo.permlink, user.name, commentPermlink, "", body, "", function(err, result) {
 		if(!err && result){
@@ -137,12 +137,13 @@ function getAvailableTransaction(transaction){
 	}
 	var permlink = memo.substring(endMemo+1);
 	var author = memo.substring(startMemo+1, endMemo);
-	
+	var to = data.from;
 	var result = {
 		author : author,
 		permlink:permlink,
 		memo: memo,
-		postCreatedAt:postCreatedAt
+		postCreatedAt:postCreatedAt,
+		to: to
 	}
 	
 	return result;

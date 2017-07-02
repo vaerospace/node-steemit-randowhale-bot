@@ -4,14 +4,14 @@
 
 ## 설치
 
-$git clone https://github.com/jongeunpark/node-steemit-randowhale-bot.git
-
-
-
 ```
+$git clone https://github.com/jongeunpark/node-steemit-randowhale-bot.git
+```
+
 ```
 $cd node-steemit-randowhale-bot/
 ```
+
 ```
 $ npm install
 ```

@@ -2,6 +2,7 @@
     "monitoringPeriod": 5,
     "minVotingPower": 50,
     "maxVotingPower": 100,
-    "price": "2.000 SBD",
+    "price": "1.000 SBD",
+    "introductionLink":"https://steemit.com/kr/@jongeun/randowhale-node-js",
     "lastVotingTimestamp": 1498888335000
 }

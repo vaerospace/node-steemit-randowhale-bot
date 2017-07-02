@@ -75,7 +75,7 @@ function createComment(postInfo){
 	
 	var commentPermlink = steem.formatter.commentPermlink(postInfo.author, postInfo.permlink);
 	postInfo.votingPower /= 100;
-	body = 'This post received a '+postInfo.votingPower+'% upvote from @'+user.name+' thanks to @'+postInfo.author+'! For more information, [click here](https://steemit.com/steemit/@randowhale/introducing-randowhale-will-you-get-the-100-vote-give-it-a-shot)!';
+	body = 'This post received a '+postInfo.votingPower+'% upvote from @'+user.name+' thanks to @'+postInfo.author+'! For more information, [click here]('+config.introductionLink+')!';
 	console.log(body);
 	steem.broadcast.comment(wif,  postInfo.author, postInfo.permlink, user.name, commentPermlink, "", body, "", function(err, result) {
 		if(!err && result){

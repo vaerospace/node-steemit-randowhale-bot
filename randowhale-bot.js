@@ -34,14 +34,14 @@ function startBot(){
 				availableTransaction = getAvailableTransaction(getAccountHistoryResult[i]);
 				if(availableTransaction){
 					logger.info('보팅 후보: '+availableTransaction.memo);
-					config.lastVotingTimestamp = availableTransaction.postCreatedAt;
-					var str = JSON.stringify(config, null, 4);
-					
-					fs.writeFile(CONFIG_FILEPATH, str, "utf8", function (err) {
-						
-						
-			        });
-					vote(availableTransaction);
+//					config.lastVotingTimestamp = availableTransaction.postCreatedAt;
+//					var str = JSON.stringify(config, null, 4);
+//					
+//					fs.writeFile(CONFIG_FILEPATH, str, "utf8", function (err) {
+//						
+//						
+//			        });
+//					vote(availableTransaction);
 				}
 			}
 		}
@@ -106,7 +106,7 @@ function getAvailableTransaction(transaction){
 	}
 	
 	data = JSON.stringify(data);
-	start = data.indexOf("transfer");
+	start = data.indexOf("\"op\":[\"transfer\",");
 	
 	if(start < 0){
 		return null;
@@ -115,7 +115,8 @@ function getAvailableTransaction(transaction){
 	if(end < 0 || end < start){
 		return null;
 	}
-	data = data.substring(start+"transfer".length+2, end);
+	data = data.substring(start+"\"op\":[\"transfer\",".length, end);
+	console.log(data);
 	data = JSON.parse(data);
 	
 	if(data.amount != config.price){

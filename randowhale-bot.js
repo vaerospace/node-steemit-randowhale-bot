@@ -22,7 +22,6 @@ setInterval(function() {
 	fs.readFile(CONFIG_FILEPATH, 'utf8', function (err, data) {
 		  if (err) throw err;
 		  config = JSON.parse(data);
-		  console.log(config);
 		  startBot();
 	});
 	

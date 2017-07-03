@@ -13,7 +13,6 @@ var CONFIG_FILEPATH = "./configs/config.json";
 
 var config = require(CONFIG_FILEPATH);
 
-config.lastVotingTimestamp = Date.parse(new Date());
 var user = require('./configs/user.json');
 var wif = initUser();
 

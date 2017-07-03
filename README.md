@@ -19,6 +19,7 @@ http://i.imgsafe.org/8bebca9eba.png
 각 파일 속성 값
 ** user.json **
 ```
+$ vi configs/user.json
 {
 	"name": "YOUR_NAME",
 	"password": "YOUR_PASSWORD"
@@ -66,5 +67,5 @@ http://i.imgsafe.org/8c409dfc6a.png
 - 테스트가 부족하여 어떤 에러가 발생하는지 예측하기 어렵습니다. 예를 들어 네트워크 문제, 스티밋 문제 등이 있을 것 같은데, 이 때 어떻게 동작하는지 살펴볼 필요가 있습니다. 
 ```
 
-## License
+### License
 MIT

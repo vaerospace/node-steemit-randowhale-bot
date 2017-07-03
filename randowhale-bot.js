@@ -19,9 +19,15 @@ var wif = initUser();
 
 
 setInterval(function() {
-	config = require(CONFIG_FILEPATH);
+	fs.readFile(CONFIG_FILEPATH, 'utf8', function (err, data) {
+		  if (err) throw err;
+		  config = JSON.parse(data);
+		  console.log(config);
+		  startBot();
+	});
 	
-	startBot();
+
+	
 }, config.monitoringPeriod * SECOND);
 
 
@@ -76,7 +82,6 @@ function createComment(postInfo){
 	var commentPermlink = steem.formatter.commentPermlink(postInfo.author, postInfo.permlink);
 	postInfo.votingPower /= 100;
 	body = 'This post received a '+postInfo.votingPower+'% upvote from @'+user.name+' thanks to @'+postInfo.to+'! For more information, [click here]('+config.introductionLink+')!';
-	console.log(body);
 	steem.broadcast.comment(wif,  postInfo.author, postInfo.permlink, user.name, commentPermlink, "", body, "", function(err, result) {
 		if(!err && result){
 			logger.info('리플 작성 성공: '+body);
@@ -116,9 +121,7 @@ function getAvailableTransaction(transaction){
 		return null;
 	}
 	data = data.substring(start+"\"op\":[\"transfer\",".length, end);
-	console.log(data);
 	data = JSON.parse(data);
-	
 	if(data.amount != config.price){
 		return null;
 	}

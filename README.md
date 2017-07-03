@@ -1,4 +1,5 @@
 # node-steemit-randowhale-bot
+스팀달러를 입금 받으면 원하는 포스트에 자동으로 보팅하는 봇입니다. 
 
 ### 1. 설치
 ```sh

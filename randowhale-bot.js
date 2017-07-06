@@ -140,6 +140,9 @@ function getAvailableTransaction(transaction){
 	var permlink = memo.substring(endMemo+1);
 	var author = memo.substring(startMemo+1, endMemo);
 	var to = data.from;
+	if(data.to != user.name){
+		return null;
+	}
 	var result = {
 		author : author,
 		permlink:permlink,

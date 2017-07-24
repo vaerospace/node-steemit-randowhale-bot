@@ -37,7 +37,7 @@ function startBot(){
 			for(var i=0; i<getAccountHistoryResult.length; i++){
 				availableTransaction = getAvailableTransaction(getAccountHistoryResult[i]);
 				if(availableTransaction){
-					logger.info('보팅 후보: '+availableTransaction.memo);
+					logger.info('Voting candidate: '+availableTransaction.memo);
 					config.lastVotingTimestamp = availableTransaction.postCreatedAt;
 					var str = JSON.stringify(config, null, 4);
 					
@@ -59,15 +59,15 @@ function vote(postInfo){
 
 	
 	postInfo.votingPower = votingPower;
-	logger.info('보팅 파워: '+(votingPower/100));
+	logger.info('Voting power: '+(votingPower/100));
 	
 	steem.broadcast.vote(wif, user.name, postInfo.author, postInfo.permlink, votingPower, function(err, voteResult) {
 		if(!err && voteResult){
 
-			logger.info('보팅 성공: '+postInfo.memo);
+			logger.info('Voting success: '+postInfo.memo);
 			createComment(postInfo);
 		}else{
-			logger.info('보팅 실패: '+err);
+			logger.info('Voting failed: '+err);
 		}
 	});
 }
@@ -82,9 +82,9 @@ function createComment(postInfo){
 	body = 'This post received a '+postInfo.votingPower+'% upvote from @'+user.name+' thanks to @'+postInfo.to+'! For more information, [click here]('+config.introductionLink+')!';
 	steem.broadcast.comment(wif,  postInfo.author, postInfo.permlink, user.name, commentPermlink, "", body, "", function(err, result) {
 		if(!err && result){
-			logger.info('리플 작성 성공: '+body);
+			logger.info('Successful ripple creation: '+body);
 		}else{
-			logger.info('리플 작성 실패: '+err);
+			logger.info('Failed to create a ripple: '+err);
 		}
 	});
 	

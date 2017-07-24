@@ -1,20 +1,20 @@
 # node-steemit-randowhale-bot
-스팀달러를 입금 받으면 원하는 포스트에 자동으로 보팅하는 봇입니다. 
+When you receive a Steam Dollar, it will automatically bot you into the desired post.
 
-### 1. 설치
+### 1. install
 ```sh
 $ git clone https://github.com/jongeunpark/node-steemit-randowhale-bot.git
 $ cd node-steemit-randowhale-bot/
 $ npm install
 ```
 
-### 2. 설정 파일 수정
-설치가 완료되면, 2가지 설정 파일을 수정해야 합니다. 
-설정 파일은 node-steemit-randowhale-bot/config 아래에 있는 2파일 입니다.
-- user.json: 보팅 및 리플을 작성할 사용자 정보
-- config.json: 보팅 파워, 폴링 주기, 보팅 가격
+### 2. Edit Settings File
+When the installation is complete, you need to modify the two configuration files.
+The configuration file node-steemit-randowhale-bot/config Below are the 2 files.
+- user.json: User information to create botting and ripple
+- config.json: Voting power, polling cycle,
 
-각 파일 속성 값
+Each file attribute value
 ** user.json **
 ```
 $ vi configs/user.json
@@ -23,8 +23,8 @@ $ vi configs/user.json
 	"password": "YOUR_PASSWORD"
 }
 ```
-- name: 사용자 계정으로 jongeun 과 같은 값을 입력합니다. 
-- password: 사용자 비밀번호로 로그인 시 사용되는 비밀번호 입니다.
+- name: By user account jongeun Enter a value such as.
+- password: Password used to login with user password.
 ** config.json **
 ```
 {
@@ -36,26 +36,27 @@ $ vi configs/user.json
     "lastVotingTimestamp": 1498888335000
 }
 ```
-- monitoringPeriod: YOUR_NAME의 트렌젝션 목록을 조회하는 주기로 단위는 초입니다. 
-- minVotingPower: 최소 보팅 파워값으로 단위는 % 입니다. 
-- maxVotingPower: 최대 보팅 파워값으로 단위는 % 입니다. 
-- price: 1 건의 보팅 당 필요한 금액입니다. "2.000 SBC", "1.000 SBD" 등으로 입력해야 합니다.(추후 수정 예정)
-- introductionLink: 리플에 기입되는 링크
-- lastVotingTimestamp: 마지막 보팅 시간입니다. 마지막 보팅 시간을 기준으로 보팅 여부를 판단합니다. 초기에는 -1로 설정하거나 현재 시간으로 입력하세요. 프로그램이 동작하면서 보팅이 완료되면 변경되는 값입니다.
+- monitoringPeriod: YOUR_NAME Is the period in which to look up the transaction list in seconds.
+- minVotingPower: The minimum boarding power value is in %. 
+- maxVotingPower: The maximum boarding power value is in %. 
+- price: 1 This is the amount required per boarding. "2.000 SBC", "1.000 SBD" Etc. (to be fixed later)
+- introductionLink: Link to ripple
+- lastVotingTimestamp: Last bot time. Determines whether or not to watch based on the last botting time. Initially set to -1 or enter the current time. This value changes when the program is running and the voting is completed.
 
-### 3. 실행
+### 3. Execution
 ```sh
 $ node randowhale-bot.js
 ```
-백그라운로 동작시키리면 아래 명령어를 입력하세요.
+If you run it in background, type the following 
 ```sh
 $ nohup node randowhale-bot.js %
 ```
 
-### 4. 한계 및 추후 계획
-- 수시로 트렌젝션 목록을 폴링으로 조회하는 것은 효율적이지 못합니다. 특정 계정에 트렌젝션이 발생하면, 이벤트를 전달하는 리스너가 있는지 파악하고 리스터를 구현할 계힉입니다.  
-- 보팅 여부를 config 파일의 lastVotingTimestamp만으로 확인하고 있습니다. 낮은 확률이지만 누락되는 거래가 존재할 것으로 예상됩니다. 몇 시간 단위로 거래내역 및, 나의 보팅 내역 등을 확인하여 누락된 거래가 있는지 확인이 필요합니다. 이 부분도 개선할 예정입니다. 
-- 테스트가 부족하여 어떤 에러가 발생하는지 예측하기 어렵습니다. 예를 들어 네트워크 문제, 스티밋 문제 등이 있을 것 같은데, 이 때 어떻게 동작하는지 살펴볼 필요가 있습니다. 
+### 4. Limitations and future plans.
+
+- It is not efficient to look up the transaction list by polling from time to time. When a transaction occurs in a particular account, it is a way to determine if there is a listener to dispatch the event and implement a lister.
+- You are checking whether you are voting with only the lastVotingTimestamp in the config file. There is a low probability but a missing transaction is expected to exist. It is necessary to check the transaction history and my voting history in several hours to see if there are any missing transactions. This part will also be improved.
+- It is difficult to predict what error is due to insufficient testing. For example, there may be a network problem, a styminess problem, etc. You need to look at how it works.
 
 ### License
 MIT

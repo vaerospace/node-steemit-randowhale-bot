@@ -1,8 +1,8 @@
 {
-    "monitoringPeriod": 20,
+    "monitoringPeriod": 120,
     "minVotingPower": 50,
     "maxVotingPower": 100,
-    "price": "1.000 SBD",
-    "introductionLink":"https://steemit.com/kr/@jongeun/1-sbd",
-    "lastVotingTimestamp": 1499052049000
+    "price": "0.001 SBD",
+    "introductionLink": "https://steemit.com/steemit/@vaerospace/true-power-with-vaerobot-your-secret-money-making-weapon",
+    "lastVotingTimestamp": 1507074507000
 }
